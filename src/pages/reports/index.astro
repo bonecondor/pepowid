@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+import ReportCard from '../../components/ReportCard.astro'
+
+const reports = await getCollection('reports')
+
+// Get unique peptides for filtering
+const allPeptides = [...new Set(reports.flatMap(r => r.data.peptides))].sort()
+---
+
+<Layout title="All Reports">
+  <header class="mb-8">
+    <h1 class="text-2xl font-semibold text-ink mb-2">Experience Reports</h1>
+    <p class="text-muted">
+      Browse {reports.length} community-submitted peptide experience reports.
+    </p>
+  </header>
+
+  <div class="mb-8">
+    <h2 class="text-sm uppercase tracking-wide text-muted mb-3">Filter by Peptide</h2>
+    <div class="flex flex-wrap gap-2">
+      {allPeptides.map(peptide => (
+        <button
+          class="peptide-filter text-sm px-3 py-1 rounded-full border border-border hover:border-accent hover:text-accent transition-colors"
+          data-peptide={peptide}
+        >
+          {peptide}
+        </button>
+      ))}
+      <button
+        class="peptide-filter text-sm px-3 py-1 rounded-full border border-accent bg-accent text-white"
+        data-peptide="all"
+      >
+        All
+      </button>
+    </div>
+  </div>
+
+  <div class="grid gap-4" id="reports-grid">
+    {reports.map(report => (
+      <div class="report-item" data-peptides={report.data.peptides.join(',')}>
+        <ReportCard
+          title={report.data.title}
+          slug={report.id}
+          peptides={report.data.peptides}
+          dose={report.data.dose}
+          duration={report.data.duration}
+          outcome={report.data.outcome}
+          purpose={report.data.purpose}
+        />
+      </div>
+    ))}
+  </div>
+
+  <div id="no-results" class="hidden text-center py-12 text-muted">
+    No reports found for this peptide.
+  </div>
+</Layout>
+
+<script>
+  const filters = document.querySelectorAll('.peptide-filter')
+  const reports = document.querySelectorAll('.report-item')
+  const noResults = document.getElementById('no-results')
+
+  filters.forEach(filter => {
+    filter.addEventListener('click', () => {
+      const peptide = filter.getAttribute('data-peptide')
+
+      // Update active state
+      filters.forEach(f => {
+        f.classList.remove('border-accent', 'bg-accent', 'text-white')
+        f.classList.add('border-border')
+      })
+      filter.classList.add('border-accent', 'bg-accent', 'text-white')
+      filter.classList.remove('border-border')
+
+      // Filter reports
+      let visibleCount = 0
+      reports.forEach(report => {
+        const reportPeptides = report.getAttribute('data-peptides')?.split(',') || []
+        const shouldShow = peptide === 'all' || reportPeptides.includes(peptide)
+
+        if (shouldShow) {
+          report.classList.remove('hidden')
+          visibleCount++
+        } else {
+          report.classList.add('hidden')
+        }
+      })
+
+      // Show/hide no results message
+      if (noResults) {
+        noResults.classList.toggle('hidden', visibleCount > 0)
+      }
+    })
+  })
+</script>

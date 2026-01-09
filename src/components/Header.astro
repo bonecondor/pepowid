@@ -1,0 +1,40 @@
+---
+const currentPath = Astro.url.pathname
+---
+
+<header class="border-b border-border bg-cream/80 backdrop-blur-sm sticky top-0 z-50">
+  <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="text-xl font-semibold text-ink hover:text-accent transition-colors">
+      Pepowid
+    </a>
+    <div class="flex gap-6 text-sm">
+      <a
+        href="/reports"
+        class:list={[
+          "hover:text-accent transition-colors",
+          currentPath.startsWith('/reports') ? "text-accent font-medium" : "text-muted"
+        ]}
+      >
+        Reports
+      </a>
+      <a
+        href="/submit"
+        class:list={[
+          "hover:text-accent transition-colors",
+          currentPath === '/submit' ? "text-accent font-medium" : "text-muted"
+        ]}
+      >
+        Submit
+      </a>
+      <a
+        href="/about"
+        class:list={[
+          "hover:text-accent transition-colors",
+          currentPath === '/about' ? "text-accent font-medium" : "text-muted"
+        ]}
+      >
+        About
+      </a>
+    </div>
+  </nav>
+</header>

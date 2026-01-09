@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Submit a Report">
+  <div class="max-w-2xl">
+    <h1 class="text-2xl font-semibold text-ink mb-4">Submit Your Experience</h1>
+    <p class="text-muted mb-8">
+      Share your peptide experience to help others make informed decisions. All submissions are reviewed before publication.
+    </p>
+
+    <section class="mb-8 p-6 bg-white border border-border rounded-lg">
+      <h2 class="text-lg font-medium text-ink mb-3">What Makes a Good Report</h2>
+      <ul class="text-muted space-y-2">
+        <li><strong class="text-ink">Be specific:</strong> Include exact doses, timing, and duration</li>
+        <li><strong class="text-ink">Be honest:</strong> Include side effects, concerns, and things that didn't work</li>
+        <li><strong class="text-ink">Be detailed:</strong> Describe your timeline — what happened and when</li>
+        <li><strong class="text-ink">Include context:</strong> Age range, weight, relevant health conditions, concurrent medications</li>
+        <li><strong class="text-ink">Name your source:</strong> Compounding pharmacy, research supplier, international pharmacy, etc.</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-lg font-medium text-ink mb-3">Report Structure</h2>
+      <p class="text-muted mb-4">Your report should cover:</p>
+      <ol class="text-muted space-y-2 list-decimal list-inside">
+        <li><strong class="text-ink">Background</strong> — Why you decided to try this peptide</li>
+        <li><strong class="text-ink">Protocol</strong> — Exactly what you did (dose, frequency, administration)</li>
+        <li><strong class="text-ink">Timeline</strong> — What happened over the course of use</li>
+        <li><strong class="text-ink">Side Effects</strong> — Everything you noticed, positive and negative</li>
+        <li><strong class="text-ink">Outcome</strong> — Your overall assessment and whether you'd do it again</li>
+      </ol>
+    </section>
+
+    <section class="mb-8 p-6 bg-accent/5 border border-accent/20 rounded-lg">
+      <h2 class="text-lg font-medium text-ink mb-3">Submission Form</h2>
+      <p class="text-muted mb-4">
+        Click below to open the submission form. Your report will be reviewed and you'll be notified when it's published.
+      </p>
+
+      <!-- Tally embed placeholder - replace data-tally-src with your actual form URL -->
+      <div class="bg-white border border-border rounded p-8 text-center">
+        <p class="text-muted mb-4">Submission form loading...</p>
+        <a
+          href="https://tally.so"
+          target="_blank"
+          rel="noopener"
+          class="inline-block bg-accent text-white px-6 py-3 rounded hover:bg-accent-light transition-colors font-medium"
+        >
+          Open Submission Form
+        </a>
+        <p class="text-sm text-muted mt-4">
+          (Form will be embedded here once created)
+        </p>
+      </div>
+
+      <!-- When you have your Tally form, replace the above with:
+      <iframe
+        data-tally-src="https://tally.so/embed/YOUR_FORM_ID?alignLeft=1&hideTitle=1&transparentBackground=1"
+        loading="lazy"
+        width="100%"
+        height="800"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Peptide Experience Report"
+      ></iframe>
+      <script src="https://tally.so/widgets/embed.js" async></script>
+      -->
+    </section>
+
+    <section class="text-sm text-muted">
+      <p class="mb-2">
+        <strong class="text-ink">Privacy:</strong> Your email is only used to notify you of publication or ask follow-up questions. It's never published or shared.
+      </p>
+      <p>
+        <strong class="text-ink">Anonymity:</strong> Reports are published without identifying information unless you specifically request attribution.
+      </p>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #faf9f6;
+  --color-ink: #1a1a1a;
+  --color-muted: #6b6b6b;
+  --color-accent: #2d5a4a;
+  --color-accent-light: #3d7a6a;
+  --color-positive: #2d5a4a;
+  --color-neutral: #6b6b6b;
+  --color-negative: #8b4049;
+  --color-border: #e5e5e5;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}

@@ -1,0 +1,137 @@
+---
+import { getCollection, render } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+
+export async function getStaticPaths() {
+  const reports = await getCollection('reports')
+  return reports.map(report => ({
+    params: { slug: report.id },
+    props: { report },
+  }))
+}
+
+const { report } = Astro.props
+const { Content } = await render(report)
+
+const outcomeColors = {
+  Positive: 'bg-positive/10 text-positive border-positive/20',
+  Neutral: 'bg-neutral/10 text-neutral border-neutral/20',
+  Negative: 'bg-negative/10 text-negative border-negative/20'
+}
+---
+
+<Layout title={report.data.title}>
+  <article class="max-w-2xl mx-auto">
+    <header class="mb-8">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {report.data.peptides.map(peptide => (
+          <span class="text-sm font-medium bg-accent/10 text-accent px-3 py-1 rounded-full">
+            {peptide}
+          </span>
+        ))}
+      </div>
+
+      <h1 class="text-2xl font-semibold text-ink mb-4">
+        {report.data.title}
+      </h1>
+
+      <p class="text-muted mb-6">
+        {report.data.purpose}
+      </p>
+
+      <div class={`rounded-lg border p-4 ${outcomeColors[report.data.outcome]}`}>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">
+          <div>
+            <span class="block text-xs uppercase tracking-wide opacity-70 mb-1">Dose</span>
+            <span class="font-medium">{report.data.dose}</span>
+          </div>
+          <div>
+            <span class="block text-xs uppercase tracking-wide opacity-70 mb-1">Duration</span>
+            <span class="font-medium">{report.data.duration}</span>
+          </div>
+          <div>
+            <span class="block text-xs uppercase tracking-wide opacity-70 mb-1">Administration</span>
+            <span class="font-medium">{report.data.administration}</span>
+          </div>
+          <div>
+            <span class="block text-xs uppercase tracking-wide opacity-70 mb-1">Source</span>
+            <span class="font-medium">{report.data.source}</span>
+          </div>
+          {report.data.vendor && (
+            <div>
+              <span class="block text-xs uppercase tracking-wide opacity-70 mb-1">Vendor</span>
+              <span class="font-medium">{report.data.vendor}</span>
+            </div>
+          )}
+          <div>
+            <span class="block text-xs uppercase tracking-wide opacity-70 mb-1">Outcome</span>
+            <span class="font-medium">{report.data.outcome}</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="border-t border-border pt-6 mb-8">
+      <h2 class="text-sm uppercase tracking-wide text-muted mb-4">About the Reporter</h2>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
+        {report.data.bodyWeight && <span>Weight: {report.data.bodyWeight}</span>}
+        {report.data.ageRange && <span>Age: {report.data.ageRange}</span>}
+        {report.data.gender && <span>Gender: {report.data.gender}</span>}
+        <span>Date: {report.data.date}</span>
+      </div>
+    </div>
+
+    <div class="prose prose-slate max-w-none">
+      <Content />
+    </div>
+
+    <footer class="mt-12 pt-6 border-t border-border">
+      <div class="flex items-center gap-2 text-sm">
+        <span class="text-muted">Would repeat:</span>
+        <span class={report.data.wouldRepeat ? 'text-positive font-medium' : 'text-negative font-medium'}>
+          {report.data.wouldRepeat ? 'Yes' : 'No'}
+        </span>
+      </div>
+    </footer>
+  </article>
+
+  <div class="mt-12 text-center">
+    <a href="/reports" class="text-sm text-accent hover:text-accent-light transition-colors">
+      &larr; Back to all reports
+    </a>
+  </div>
+</Layout>
+
+<style>
+  .prose h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .prose h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose p {
+    color: rgba(26, 26, 26, 0.9);
+    line-height: 1.625;
+    margin-bottom: 1rem;
+  }
+  .prose ul, .prose ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+  .prose li {
+    color: rgba(26, 26, 26, 0.9);
+    margin-bottom: 0.5rem;
+  }
+  .prose strong {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+</style>

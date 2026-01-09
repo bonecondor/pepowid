@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string
+  slug: string
+  peptides: string[]
+  dose: string
+  duration: string
+  outcome: 'Positive' | 'Neutral' | 'Negative'
+  purpose: string
+}
+
+const { title, slug, peptides, dose, duration, outcome, purpose } = Astro.props
+
+const outcomeColors = {
+  Positive: 'bg-positive/10 text-positive',
+  Neutral: 'bg-neutral/10 text-neutral',
+  Negative: 'bg-negative/10 text-negative'
+}
+---
+
+<a href={`/reports/${slug}`} class="block group">
+  <article class="border border-border rounded-lg p-5 hover:border-accent/50 transition-colors bg-white">
+    <div class="flex flex-wrap gap-2 mb-3">
+      {peptides.map(peptide => (
+        <span class="text-xs font-medium bg-accent/10 text-accent px-2 py-1 rounded">
+          {peptide}
+        </span>
+      ))}
+      <span class={`text-xs font-medium px-2 py-1 rounded ${outcomeColors[outcome]}`}>
+        {outcome}
+      </span>
+    </div>
+
+    <h3 class="font-medium text-ink group-hover:text-accent transition-colors mb-2">
+      {title}
+    </h3>
+
+    <p class="text-sm text-muted mb-3 line-clamp-2">
+      {purpose}
+    </p>
+
+    <div class="flex gap-4 text-xs text-muted">
+      <span>{dose}</span>
+      <span>&middot;</span>
+      <span>{duration}</span>
+    </div>
+  </article>
+</a>

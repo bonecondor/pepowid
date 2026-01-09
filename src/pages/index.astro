@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../layouts/Layout.astro'
+import ReportCard from '../components/ReportCard.astro'
+
+const reports = await getCollection('reports')
+const featuredReports = reports.slice(0, 3)
+---
+
+<Layout title="Home">
+  <section class="mb-12">
+    <h1 class="text-3xl font-semibold text-ink mb-4">
+      Pepowid
+    </h1>
+    <p class="text-lg text-muted max-w-2xl mb-6">
+      A community archive of peptide experiences. Real reports from real people, documented for those who want to learn from others.
+    </p>
+    <p class="text-muted max-w-2xl">
+      We collect self-reported experiences with research peptides, GLP-1 agonists, and related compounds. No medical advice, no endorsements — just documented experiences to help inform your own research.
+    </p>
+  </section>
+
+  <section class="mb-12">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-xl font-medium text-ink">Recent Reports</h2>
+      <a href="/reports" class="text-sm text-accent hover:text-accent-light transition-colors">
+        View all &rarr;
+      </a>
+    </div>
+
+    <div class="grid gap-4">
+      {featuredReports.map(report => (
+        <ReportCard
+          title={report.data.title}
+          slug={report.id}
+          peptides={report.data.peptides}
+          dose={report.data.dose}
+          duration={report.data.duration}
+          outcome={report.data.outcome}
+          purpose={report.data.purpose}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-white border border-border rounded-lg p-6">
+    <h2 class="text-lg font-medium text-ink mb-3">Share Your Experience</h2>
+    <p class="text-muted mb-4">
+      Have you used peptides and want to contribute to the knowledge base? We're looking for detailed, honest reports — positive, negative, or neutral.
+    </p>
+    <a
+      href="/submit"
+      class="inline-block bg-accent text-white px-4 py-2 rounded hover:bg-accent-light transition-colors text-sm font-medium"
+    >
+      Submit a Report
+    </a>
+  </section>
+</Layout>
