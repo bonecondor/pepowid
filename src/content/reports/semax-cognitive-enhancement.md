@@ -23,7 +23,7 @@ I have ADHD (diagnosed, medicated with Vyvanse) but still struggle with brain fo
 
 Used a pre-made nasal spray from a Russian pharmacy. 200mcg per spray, 3 sprays daily (morning, midday, late afternoon). Kept refrigerated after opening.
 
-Continued Vyvanse 40mg throughout — no changes to my regular medication.
+Continued Vyvanse 40mg throughout, no changes to my regular medication.
 
 ## Timeline
 
@@ -43,7 +43,7 @@ Continued Vyvanse 40mg throughout — no changes to my regular medication.
 
 ## Why Neutral?
 
-Semax did *something* — I'm fairly confident it wasn't pure placebo. The afternoon fog improvement was real and consistent. But:
+Semax did *something*. I'm fairly confident it wasn't pure placebo. The afternoon fog improvement was real and consistent. But:
 
 1. The effect was subtle, not transformative
 2. It didn't stack dramatically with my Vyvanse
@@ -54,9 +54,9 @@ For someone without access to better options, or as a standalone nootropic, it m
 
 ## What I Learned
 
-- Peptide nootropics exist on a spectrum from "barely perceptible" to "life-changing" depending on baseline
+- Peptide nootropics exist on a spectrum from "barely perceptible" to "life-changing," depending on baseline
 - My expectations were probably too high based on enthusiastic Reddit reports
-- The afternoon timing was key — morning doses did little
+- The afternoon timing was key; morning doses did little
 - Russian pharmaceutical peptides have quality control but supply chain is complicated
 
 ## Would I Try Again?
@@ -66,7 +66,7 @@ Probably not Semax specifically. I might try NA-Semax-Amidate (more potent analo
 ## Notes for Others
 
 If you're considering Semax:
-- Have realistic expectations — this isn't Adderall
+- Have realistic expectations (this isn't Adderall)
 - Morning dosing alone probably won't do much
 - Give it at least 4-6 weeks before judging
 - The nasal spray format is convenient but verify cold storage in shipping

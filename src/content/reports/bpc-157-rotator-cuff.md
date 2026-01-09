@@ -21,7 +21,7 @@ I'm a recreational climber who strained my rotator cuff in late summer 2024. MRI
 
 ## Protocol
 
-I reconstituted 5mg vials with bacteriostatic water and injected 250mcg subcutaneously twice daily — once in the morning and once before bed. I injected as close to the shoulder as I could manage (deltoid area). Stored reconstituted peptide in the refrigerator.
+I reconstituted 5mg vials with bacteriostatic water and injected 250mcg subcutaneously twice daily, once in the morning and once before bed. I injected as close to the shoulder as I could manage (deltoid area). Stored reconstituted peptide in the refrigerator.
 
 Continued PT exercises 3x weekly throughout.
 
